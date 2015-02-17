@@ -1,0 +1,115 @@
+<craft>
+	<parameter name="size" type="int" default="1"/>
+	<parameter name="length" type="int" default="75"/>
+	<script type="text/openjscad">
+
+		function main() {
+			var size = params.size;
+			var length = params.length;
+
+			if (length < 4)
+				length = 4;
+
+			// assembled body
+			var p = union(
+				shaft(),
+				ferrule(),
+				tip()
+			);
+
+			// rounds off tip
+		    p = difference(
+		    	p,
+		    	tip_round()
+		    );
+
+		    // assembled pencil
+		    return p.scale(size);
+
+		    // pencil components
+		    function shaft() {
+		    	var s;
+
+			    // parts
+				s = cylinder({
+					r: 2,
+					h: length,
+					fn: 6
+				})
+			    
+			    // transformations
+			    s = s.rotateX(90);
+			    s = s.translate([0, 25, 0]);
+
+			    return s;
+			}
+
+			function tip_round() {
+				var r;
+
+			    // parts
+			    r = torus({
+			    	ri: 5, 
+			    	ro: 6, 
+			    	fni: 6
+			    });
+			    
+			    // transformations    
+			    r = r.rotateX(90);
+			    r = r.translate([0, -length + 25, 0]);
+			  
+			    return r;
+			}
+
+			function tip() {
+				var t;
+
+			    // parts
+			    t = cylinder({
+			    	r1: 1, 
+			    	r2: 0, 
+			    	h: 2
+			    });
+			    
+			    // transformations
+			    t = t.rotateX(90);
+			    t = t.translate([0, -length + 25, 0]);
+			    
+			    return t;
+			}
+
+			function ferrule() {
+				var guard, woord, eraser, end;
+
+			    // parts
+			    guard = cylinder({
+			        r: 2.3,
+			        h: 2
+			    });
+
+			    wood = cylinder({
+			        r: 2.2,
+			        h: 1
+			    }).translate([0,0,2]);
+
+			    eraser = cylinder({
+			        r: 2.2,
+			        h: 3
+			    }).translate([0, 0, 10]);
+			    
+			    // combine
+			    end = union(guard, wood);
+			    end = end.union(end.translate([0, 0, 3]));
+			    end = end.union(end.translate([0, 0, 4]));
+			    end = end.union(eraser);
+			    
+			    // transformations
+			    end = end.rotateX(270);
+			    end = end.translate([0, 25, 0]);
+			    
+			    return end;
+			}
+		}
+
+	</script>
+</craft>
