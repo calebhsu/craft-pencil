@@ -17,7 +17,8 @@
                 tip()
             );
 
-            // rounds off tip = difference(
+            // rounds off tip 
+            p = difference(
                 p,
                 tip_round()
             );
