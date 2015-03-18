@@ -20,14 +20,13 @@
                 t = t.rotateX(90);
                 t = t.translate([0, -length + 25, 0]);
                 
-                return t.scale(size);
+                return t;
             }
         </script>
         
         <!-- Shaft -->
         <script type="text/openjscad">
             function main() {
-                var size = params.size;
                 var length = params.length;
 
                 var p;
@@ -43,7 +42,7 @@
                 );
     
                 // assembled pencil
-                return p.scale(size);
+                return p;
     
                 // pencil components
                 function shaft() {
@@ -113,7 +112,7 @@
                 end = end.rotateX(270);
                 end = end.translate([0, 25, 0]);
                 
-                return end.scale(size);
+                return end;
             }    
         </script>
     </group>
