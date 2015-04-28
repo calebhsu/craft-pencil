@@ -1,4 +1,4 @@
-<craft>
+<craft name="pencil">
     <parameter name="size" type="int" default="1"/>
     <parameter name="length" type="int" default="75"/>
     
