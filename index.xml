@@ -2,26 +2,39 @@
     <parameter name="size" type="int" default="1"/>
     <parameter name="length" type="int" default="75"/>
     
-    <group>
+    <column align="x50 z50">
         <script>
             function main() {
-                // Tip
-                var length = params.length;
-                var t;
-
+                // Ferrule
+                var guard, wood, eraser, end;
+        
                 // parts
-                t = cylinder({
-                    r1: 1, 
-                    r2: 0, 
+                guard = cylinder({
+                    r: 2.3,
                     h: 2
                 });
+        
+                wood = cylinder({
+                    r: 2.2,
+                    h: 1
+                }).translate([0,0,2]);
+        
+                eraser = cylinder({
+                    r: 2.2,
+                    h: 3
+                }).translate([0, 0, 10]);
+                
+                // combine
+                end = union(guard, wood);
+                end = end.union(end.translate([0, 0, 3]));
+                end = end.union(end.translate([0, 0, 4]));
+                end = end.union(eraser);
                 
                 // transformations
-                t = t.rotateX(90);
-                t = t.translate([0, -length + 25, 0]);
+                end = end.rotateX(270);
                 
-                return t;
-            }
+                return end;
+            }    
         </script>
 
         <script>
@@ -80,41 +93,26 @@
                 }
             }
         </script>
-
+        
         <script>
             function main() {
-                // Ferrule
-                var guard, wood, eraser, end;
-        
+                // Tip
+                var length = params.length;
+                var t;
+
                 // parts
-                guard = cylinder({
-                    r: 2.3,
+                t = cylinder({
+                    r1: 1, 
+                    r2: 0, 
                     h: 2
                 });
-        
-                wood = cylinder({
-                    r: 2.2,
-                    h: 1
-                }).translate([0,0,2]);
-        
-                eraser = cylinder({
-                    r: 2.2,
-                    h: 3
-                }).translate([0, 0, 10]);
-                
-                // combine
-                end = union(guard, wood);
-                end = end.union(end.translate([0, 0, 3]));
-                end = end.union(end.translate([0, 0, 4]));
-                end = end.union(eraser);
                 
                 // transformations
-                end = end.rotateX(270);
-                end = end.translate([0, 25, 0]);
+                t = t.rotateX(90);
                 
-                return end;
-            }    
+                return t;
+            }
         </script>
-    </group>
+    </column>
     
 </craft>
