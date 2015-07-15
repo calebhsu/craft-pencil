@@ -1,16 +1,23 @@
 <craft name="pencil">
     <parameter name="length" type="int" default="75"/>
     
-    <col layout="centerZ()">
-        <stack transform="rotateX(270)">
-            <cylinder radius="2.2" height="3" color="indianred"/>
-            <repeat n="3" color="silver">
+    <style>
+        .tip { color: black; }
+        .shaft { color: orange; }
+        .guard { color: silver; }
+        .eraser { color: indianred; }
+    </style>
+    
+    <col l="centerZ()">
+        <stack t="rotateX(270)" class="guard">
+            <cylinder radius="2.2" height="3" class="eraser"/>
+            <repeat n="3">
                 <cylinder radius="2.2" height="1"/>
                 <cylinder radius="2.3" height="2"/>
             </repeat>
         </stack>
         
-        <g transform="rotateX(180)" color="orange">
+        <g t="rotateX(180)" class="shaft">
             <script>
                 function main() {
                     // Shaft
@@ -69,10 +76,10 @@
             </script>
         </g>
         
-        <solidify color="black">
-            <col spacing="-2" layout="centerZ()">
-                <circle radius="0.1" transform="rotateX(90)"/>
-                <circle radius="1" transform="rotateX(90)"/>
+        <solidify class="tip">
+            <col spacing="-2" l="centerZ()">
+                <circle radius="0.1" t="rotateX(90)"/>
+                <circle radius="1" t="rotateX(90)"/>
             </col>
         </solidify>
     </col>
