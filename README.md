@@ -2,8 +2,12 @@
 
 Parameterized pencil model.
 
-### Install
-    $ npm install craft-pencil
+### Usage
+```html
+<craft>
+    <craft name="pencil" module="craft-pencil"/>
+    <pencil></pencil>
+</craft>
 
 ### Parameters
 - length: adjusts length of pencil

@@ -18,7 +18,7 @@
         </stack>
         
         <g t="rotateX(180)" class="shaft">
-            <script>
+            <script type="text/openjscad">
                 function main() {
                     // Shaft
                     var length = params.length;
