@@ -8,6 +8,7 @@ Parameterized pencil model.
     <craft name="pencil" module="craft-pencil"/>
     <pencil></pencil>
 </craft>
+```
 
 ### Parameters
 - length: adjusts length of pencil
